@@ -1,0 +1,14 @@
+version: '3.7'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./app:/app:cached
+    command: npm start
+    ports:
+      - "0.0.0.0:8080:8080"
+volumes:
+  app:
