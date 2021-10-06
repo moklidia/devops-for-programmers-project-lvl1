@@ -8,4 +8,4 @@ start:
 	docker-compose run app npm start
 
 test:
-	docker-compose run app npm test
+	docker-compose -f docker-compose.yml up --abort-on-container-exit

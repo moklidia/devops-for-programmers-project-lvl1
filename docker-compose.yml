@@ -10,13 +10,17 @@ services:
       - app:/app:cached
     depends_on:
       - db
+    env_file:
+      - app/.env
     command: npm test
+
   db:
-    image: postgres:latest
+    image: postgres
     restart: always
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: password
-    
+      DATABASE_HOST: db
+      DATABASE_NAME: postgres 
 volumes:
   app:
