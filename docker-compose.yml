@@ -8,6 +8,15 @@ services:
     image: limoha/devops-for-programmers-project-lvl1
     volumes:
       - app:/app:cached
+    depends_on:
+      - db
     command: npm test
+  db:
+    image: postgres:latest
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+    
 volumes:
   app:
