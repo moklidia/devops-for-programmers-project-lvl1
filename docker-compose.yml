@@ -10,6 +10,12 @@ services:
       - app:/app:cached
     depends_on:
       - db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      DATABASE_HOST: db
+      DATABASE_NAME: postgres 
+      POSTGRES_HOST_AUTH_METHOD: trust
     command: npm test
 
   db:
