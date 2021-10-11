@@ -11,8 +11,7 @@ services:
     depends_on:
       - db
     environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: password
+      DATABASE_PASSWORD: password
       DATABASE_HOST: db
       DATABASE_NAME: postgres 
       DATABASE_USERNAME: postgres
@@ -20,16 +19,13 @@ services:
     command: npm test
 
   db:
-    image: postgres
+    image: postgres:12-alpine
     environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: password
+      DATABASE_PASSWORD: password
       DATABASE_HOST: db
       DATABASE_NAME: postgres 
       DATABASE_USERNAME: postgres
       POSTGRES_HOST_AUTH_METHOD: trust
-    ports:
-      - 5432:5432
     volumes:
       - pgdata:/var/lib/postgresql/data
 volumes:
