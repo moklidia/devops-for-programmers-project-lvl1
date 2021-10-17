@@ -6,8 +6,6 @@ services:
       context: .
       dockerfile: Dockerfile.production
     image: limoha/devops-for-programmers-project-lvl1
-    volumes:
-      - app:/app:cached
     depends_on:
       - db
     environment:
@@ -15,7 +13,6 @@ services:
       DATABASE_HOST: db
       DATABASE_NAME: postgres 
       DATABASE_USERNAME: postgres
-      POSTGRES_HOST_AUTH_METHOD: trust
     command: npm test
 
   db:
@@ -25,7 +22,6 @@ services:
       DATABASE_HOST: db
       DATABASE_NAME: postgres 
       DATABASE_USERNAME: postgres
-      POSTGRES_HOST_AUTH_METHOD: trust
     volumes:
       - pgdata:/var/lib/postgresql/data
 volumes:
